@@ -9,6 +9,7 @@ const forecast = require('./utils/forecast');
 // console.log('Current Filename: ', __filename)
 
 const app = express() // Doesn't take any any arguments. Instead configure server by using methods on app
+const port = process.env.PORT || 3000 //HEROKU PORT or default to 3000
 //Define paths for Express
 const publicDirectory = path.join(__dirname, '../public')
 // Handlebars expects "views" folder in root. Changed it to "template" for demostration
@@ -117,6 +118,7 @@ app.get('*', (req, res) => {
 })
 
 // To start the server. Only used once on an app. Second argument is optional
-app.listen(3000, () => {
-  console.log('Server is up on port 3000.');
+// Taking the port number from either Heroku or the default of 3000 above.
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 })

@@ -8,7 +8,9 @@ const messageTwo = document.querySelector('#message-two')
 
 // Fetch weather
 const fetchWeather = (location) => {
-  fetch('http://localhost:3000/weather?address='+ location)
+  // fetch('http://localhost:3000/weather?address='+ location)
+  // Now that we are pulling in Heroku, by removing 'localhost' the app will still know to either do Heroku or localhost
+  fetch('/weather?address='+ location)
   .then((res) => {
     res.json().then( ( { error, location, forecast } ) => {
       if (error) {
